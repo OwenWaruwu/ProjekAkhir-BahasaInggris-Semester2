@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Quest 📚</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div id="app">
+  <div class="bg-deco" id="bgDeco"></div>
+
+  <!-- ===== MENU SCREEN ===== -->
+  <div class="screen active" id="menuScreen">
+    <div class="logo-area">
+      <span class="logo-icon">📚</span>
+      <div class="logo-title">Grammar Quest</div>
+      <div class="logo-sub">Test Your English Skills</div>
+    </div>
+    <div class="menu-card">
+      <div class="section-label">Choose Difficulty</div>
+      <div class="difficulty-grid">
+        <button class="diff-btn easy selected" onclick="selectDiff('easy', this)">
+          <span class="diff-icon">🌱</span>
+          <span class="diff-name" style="color:#4ecdc4">Easy</span>
+          <span class="diff-desc">Basic tenses &amp; parts of speech</span>
+        </button>
+        <button class="diff-btn medium" onclick="selectDiff('medium', this)">
+          <span class="diff-icon">⚡</span>
+          <span class="diff-name" style="color:#f9c74f">Medium</span>
+          <span class="diff-desc">Conjunctions, prepositions &amp; more</span>
+        </button>
+        <button class="diff-btn hard" onclick="selectDiff('hard', this)">
+          <span class="diff-icon">🔥</span>
+          <span class="diff-name" style="color:#e76f51">Hard</span>
+          <span class="diff-desc">Active/passive &amp; complex grammar</span>
+        </button>
+      </div>
+      <button class="start-btn" onclick="startGame()">🎮 Start Game</button>
+      <div class="how-to">❤️ 3 lives per game &nbsp;|&nbsp; ⬆ Level up every 5 correct &nbsp;|&nbsp; 🔥 Streaks = bonus points</div>
+    </div>
+  </div>
+
+  <!-- ===== GAME SCREEN ===== -->
+  <div class="screen" id="gameScreen">
+    <div class="top-bar">
+      <div class="lives-display" id="livesDisplay"></div>
+      <div class="level-badge">LVL <span id="levelNum">1</span></div>
+      <div class="score-area">
+        <div class="score-val" id="scoreVal">0</div>
+        <div class="score-label">Score</div>
+      </div>
+    </div>
+
+    <div class="progress-area">
+      <span id="qProgress">Question 1</span>
+      <span id="streakInfo">🔥 Streak: 0</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="streak-bar"><div class="streak-fill" id="streakFill"></div></div>
+
+    <div class="question-card">
+      <div class="grammar-tag" id="grammarTag">Tense</div>
+      <div class="question-label">Identify the grammar used in the highlighted part:</div>
+      <div class="question-text" id="questionText"></div>
+    </div>
+
+    <div class="options-grid" id="optionsGrid"></div>
+
+    <div class="feedback-box" id="feedbackBox">
+      <div class="feedback-title" id="feedbackTitle"></div>
+      <div id="feedbackText"></div>
+    </div>
+
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question ➜</button>
+  </div>
+
+  <!-- ===== GAME OVER SCREEN ===== -->
+  <div class="screen" id="gameoverScreen">
+    <div class="gameover-card">
+      <span class="gameover-icon" id="gameoverIcon">💀</span>
+      <div class="gameover-title" id="gameoverTitle">Game Over</div>
+      <div class="gameover-sub" id="gameoverSub"></div>
+      <div id="rankBadge" class="rank-badge rank-C">Rank C</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val" id="finalScore">0</div><div class="stat-lbl">Score</div></div>
+        <div class="stat-card"><div class="stat-val" id="finalCorrect">0</div><div class="stat-lbl">Correct</div></div>
+        <div class="stat-card"><div class="stat-val" id="finalLevel">1</div><div class="stat-lbl">Max Level</div></div>
+      </div>
+      <div class="gameover-tip" id="gameoverTip"></div>
+      <button class="replay-btn" onclick="startGame()">🔄 Play Again</button>
+      <button class="menu-back" onclick="showMenu()">← Back to Menu</button>
+    </div>
+  </div>
+
+  <!-- ===== LEVEL UP OVERLAY ===== -->
+  <div class="levelup-overlay" id="levelupOverlay">
+    <div class="levelup-card">
+      <span class="levelup-icon">⬆️</span>
+      <div class="levelup-title">Level Up!</div>
+      <div class="levelup-sub" id="levelupSub">You reached Level 2</div>
+      <div class="levelup-info" id="levelupInfo"></div>
+      <button class="levelup-continue" onclick="closeLevelUp()">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
